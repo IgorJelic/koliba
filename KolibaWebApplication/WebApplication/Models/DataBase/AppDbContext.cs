@@ -6,12 +6,12 @@ namespace WebApplication.Models.DataBase
 {
     public class AppDbContext : DbContext
     {
-        DbSet<Meal> Meals { get; set; }
-        DbSet<Drink> Drinks { get; set; }
-        DbSet<Order> Orders { get; set; }
-        DbSet<User> Users { get; set; }
-        DbSet<Salesman> Salesmans { get; set; }
-        DbSet<Administrator> Administrators { get; set; }
+        public DbSet<Meal> Meals { get; set; }
+        public DbSet<Drink> Drinks { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Salesman> Salesmans { get; set; }
+        public DbSet<Administrator> Administrators { get; set; }
 
         public AppDbContext()
             : base("name=DefaultConnection")
@@ -29,5 +29,6 @@ namespace WebApplication.Models.DataBase
 
             base.OnModelCreating(modelBuilder);
         }
+
     }
 }
