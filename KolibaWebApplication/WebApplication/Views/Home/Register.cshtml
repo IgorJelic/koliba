@@ -3,13 +3,17 @@
     ViewBag.Title = "Register";
 }
 
-<section id="cover" class="min-vh-100">
+@Styles.Render("~/Content/home");
+@Scripts.Render("~/bundles/jquery");
+@Scripts.Render("~/bundles/home");
+
+<section id="cover" class="min-vh-100 register-cover">
     <div id="cover-caption">
         <div class="my-flex text-white">
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
                 <h1 class="my-text-white" style="margin-bottom:20px; text-align:center">Register form</h1>
 
-                <form action="~/Home/Index" class="my-flex-column my-text-white">
+                <form id="register-form" action="~/Home/Index" class="my-flex-column my-text-white">
                     <div class="form-group">
                         <label style="font-weight:lighter" for="firstname">First Name</label>
                         <input type="text" class="form-control" placeholder="First Name" id="firstname" autocomplete="off">
@@ -26,11 +30,10 @@
                         <label style="font-weight:lighter" for="password">Password</label>
                         <input type="password" class="form-control" placeholder="Password" id="password">
                     </div>
-                    <button type="submit" class="btn btn-primary" style="margin-bottom:20px">Sign In</button>
+                    <button type="submit" class="btn btn-primary" style="margin-bottom:20px">Register</button>
                 </form>
 
             </div>
         </div>
     </div>
 </section>
-

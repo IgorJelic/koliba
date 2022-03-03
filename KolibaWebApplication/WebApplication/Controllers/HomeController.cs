@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
+using WebApplication.Models;
 using WebApplication.Models.DataBase;
 
 namespace WebApplication.Controllers
@@ -33,6 +35,40 @@ namespace WebApplication.Controllers
             ViewBag.Title = "Sign In Page";
 
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult SignInUser(User user)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:49693/api/signin");
+
+                // HTTP POST
+                var postTask = client.PostAsJsonAsync("", user);
+                postTask.Wait();
+
+                var result = postTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var content = result.Content.ReadAsAsync<User>();
+                    content.Wait();
+
+                    var currentUser = content.Result;
+                    Session["user"] = currentUser;
+
+                    return RedirectToAction("Index");
+                }
+            }
+
+            return new EmptyResult();
+        }
+
+        public ActionResult SignOutUser()
+        {
+            Session["user"] = null;
+
+            return RedirectToAction("Index");
         }
 
         public ActionResult Register()

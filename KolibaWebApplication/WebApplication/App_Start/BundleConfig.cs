@@ -22,6 +22,18 @@ namespace WebApplication
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/Site.css"));
+
+            // Custom bundles //
+
+            // HOME CONTROLLER
+            // style bundle
+            bundles.Add(new StyleBundle("~/Content/home").Include(
+                    "~/Content/bootstrap.css",
+                    "~/Content/home.css"));
+
+            // script bundle
+            bundles.Add(new ScriptBundle("~/bundles/home").Include(
+                "~/Scripts/home-script.js"));
         }
     }
 }
