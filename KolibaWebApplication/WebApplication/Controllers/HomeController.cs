@@ -59,6 +59,16 @@ namespace WebApplication.Controllers
 
                     return RedirectToAction("Index");
                 }
+                else if (result.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    var content = result.Content.ReadAsAsync<string>();
+                    content.Wait();
+
+                    var errMsg = content.Result;
+                    ViewBag.errMsg = errMsg;
+
+                    return View("SignIn");
+                }
             }
 
             return new EmptyResult();

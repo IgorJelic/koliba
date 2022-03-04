@@ -12,6 +12,10 @@
         <div class="my-flex text-white">
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
                 <h1 class="my-text-white" style="margin-bottom:20px; text-align:center">Sign in form</h1>
+                @if (ViewBag.errMsg != null && ViewBag.errMsg != "")
+                {
+                    <h3 style="font-weight: lighter; color: orangered; text-align: center; margin-bottom:20px">@ViewBag.errMsg</h3>
+                }
 
                 <form id="signin-form" action="~/Home/SignInUser" method="post" class="my-flex-column my-text-white">
                     <div class="form-group ">

@@ -168,7 +168,10 @@
     <Compile Include="Controllers\APIs\DrinksController.cs" />
     <Compile Include="Controllers\APIs\MealsController.cs" />
     <Compile Include="Controllers\APIs\UsersController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -255,6 +258,9 @@
     <Content Include="Views\Shared\_NavBarLoggedIn.cshtml" />
     <Content Include="Views\Home\SignIn.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Menu\Index.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

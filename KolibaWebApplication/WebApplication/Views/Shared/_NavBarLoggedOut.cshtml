@@ -1,4 +1,6 @@
-﻿<div style="margin: 0" class="navbar navbar-inverse navbar-fixed-top">
+﻿@Styles.Render("~/Content/home");
+
+<div style="margin: 0" class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -6,16 +8,24 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            @Html.ActionLink("Koliba", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+            @*@Html.ActionLink("Koliba", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
         </div>
         <div class="navbar-collapse collapse">
-            @*<ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-            </ul>*@
+            <ul class="nav navbar-nav">
+                @*<li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                <li>@Html.ActionLink("Menu", "Index", "Menu", new { area = "" }, null)</li>
+                <li>@Html.ActionLink("Contact", "Index", "Contact", new { area = "" }, null)</li>*@
+
+                <li><a href="~/Home/Index" class="navbar-brand icon" style="margin-right: 24px; font-size: large;"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+                <li><a href="~/Menu/Index" class="navbar-brand icon" style="margin-right: 24px; font-size: large;"><i class="fa fa-cutlery" aria-hidden="true"></i></a></li>
+                <li><a href="~/Contact/Index" class="navbar-brand icon" style="font-size: large;"><i class="fa fa-phone  " aria-hidden="true"></i></a></li>
+            </ul>
             <ul class="nav navbar-nav navbar-right">
-                @*<li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>*@
-                <li>@Html.ActionLink("Register", "Register", "Home", new { area = "" }, null)</li>
-                <li>@Html.ActionLink("Sign In", "SignIn", "Home", new { area = "" }, null)</li>
+                @*<li>@Html.ActionLink("Register", "Register", "Home", new { area = "" }, null)</li>*@
+                @*<li>@Html.ActionLink("Sign In", "SignIn", "Home", new { area = "" }, null)</li>*@
+                <li><a href="~/Home/Register" style="font-size: 16px; padding-top: 16px; padding-bottom: 16px;">Register</a></li>
+                <li><a href="~/Home/SignIn" style="font-size: 16px; padding-top: 16px; padding-bottom:16px;">Sign In</a></li>
             </ul>
         </div>
     </div>
