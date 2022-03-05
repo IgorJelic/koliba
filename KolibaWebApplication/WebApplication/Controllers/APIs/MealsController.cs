@@ -12,7 +12,7 @@ namespace WebApplication.Controllers.APIs
 	public class MealsController : ApiController
 	{
 		[Route("api/meals")]
-		public IHttpActionResult GetAllMeals()
+		public HttpResponseMessage GetAllMeals()
 		{
 			IList<Meal> meals = null;
 
@@ -30,14 +30,14 @@ namespace WebApplication.Controllers.APIs
 
 			if (meals.Count == 0)
 			{
-				return NotFound();
+				return Request.CreateResponse(HttpStatusCode.NotFound, "No meals found.");
 			}
 
-			return Ok(meals);
+			return Request.CreateResponse(HttpStatusCode.OK, meals);
 		}
 
 		[Route("api/meals/{id}")]
-		public IHttpActionResult GetMeal(int id)
+		public HttpResponseMessage GetMeal(int id)
 		{
 			Meal meal = null;
 
@@ -49,10 +49,10 @@ namespace WebApplication.Controllers.APIs
 
 			if (meal == null)
 			{
-				return NotFound();
+				return Request.CreateResponse(HttpStatusCode.NotFound, $"No meal with id : {id}");
 			}
 
-			return Ok(meal);
+			return Request.CreateResponse(HttpStatusCode.OK, meal);
 		}
 	}
 }

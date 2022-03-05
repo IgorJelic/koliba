@@ -34,6 +34,16 @@ namespace WebApplication
             // script bundle
             bundles.Add(new ScriptBundle("~/bundles/home").Include(
                 "~/Scripts/home-script.js"));
+
+            // MENU CONTROLLER
+            // style bundle
+            bundles.Add(new StyleBundle("~/Content/menu").Include(
+                    "~/Content/bootstrap.css",
+                    "~/Content/menu.css"));
+
+            // script bundle
+            bundles.Add(new ScriptBundle("~/bundles/menu").Include(
+                "~/Scripts/menu-script.js"));
         }
     }
 }

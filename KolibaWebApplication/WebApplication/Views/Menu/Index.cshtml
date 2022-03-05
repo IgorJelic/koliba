@@ -1,7 +1,82 @@
-﻿
+﻿@using WebApplication.VewModels
+@using WebApplication.Models
+@model MealDrinkViewModel
+
 @{
     ViewBag.Title = "Menu";
 }
 
-<h2>Index</h2>
+@Styles.Render("~/Content/menu");
+@*@Styles.Render("~/Content/fontawesome")*@
+@Scripts.Render("~/bundles/jquery");
+@Scripts.Render("~/bundles/menu");
 
+<h2 style="text-align: center; margin-top: 50px;">MENU</h2>
+
+<hr style="margin-top:10px;" />
+
+<div class="content-container">
+    <div class="left-content">
+        <h4>Obrok</h4>
+        <table class="table">
+            <tr>
+                <th>Naziv</th>
+                <th>Cena (din/kg)</th>
+                <th></th>
+            </tr>
+
+            @foreach (Meal item in Model.Meals)
+            {
+                <tr>
+                    <td style="text-transform:capitalize">
+                        @item.Name
+                    </td>
+                    <td style="text-align:end">
+                        @item.Price din
+                    </td>
+                    <td>
+                        @if (Session["user"] != null)
+                        {
+                            <span class="span1">
+                                <input class="input-custom" type="number" onkeydown="return false" min="100" value="0" max="1500" step="50" /> <span>gr</span>
+                            </span>
+                            <button class="btn-custom"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                            @*<button class="btn-custom"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>*@
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="right-content">
+        <h4>Piće</h4>
+        <table class="table">
+            <tr>
+                <th>Naziv</th>
+                <th>Cena (din/kg)</th>
+                <th></th>
+            </tr>
+
+            @foreach (Drink item in Model.Drinks)
+            {
+                <tr>
+                    <td style="text-transform:capitalize">
+                        @item.Name
+                    </td>
+                    <td style="text-align:end">
+                        @item.Price din
+                    </td>
+                    <td>
+                        @if (Session["user"] != null)
+                        {
+                            <span class="span2">
+                                <input class="input-custom smaller" type="number" onkeydown="return false" value="0" min="1" max="10" step="1" /> <span>kom</span>
+                            </span>
+                            <button class="btn-custom"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

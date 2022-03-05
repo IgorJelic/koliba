@@ -13,7 +13,7 @@ namespace WebApplication.Controllers.APIs
     {
 
         [Route("api/drinks")]
-        public IHttpActionResult GetAllDrinks()
+        public HttpResponseMessage GetAllDrinks()
         {
             IList<Drink> drinks = null;
 
@@ -24,14 +24,14 @@ namespace WebApplication.Controllers.APIs
 
             if (drinks.Count == 0)
             {
-                return NotFound();
+                return Request.CreateResponse(HttpStatusCode.NotFound, "No drinks found");
             }
 
-            return Ok(drinks);
+            return Request.CreateResponse(HttpStatusCode.OK, drinks);
         }
 
         [Route("api/drinks/{id}")]
-        public IHttpActionResult GetDrink(int id)
+        public HttpResponseMessage GetDrink(int id)
         {
             Drink drink = null;
 
@@ -43,10 +43,10 @@ namespace WebApplication.Controllers.APIs
 
             if (drink == null)
             {
-                return NotFound();
+                return Request.CreateResponse(HttpStatusCode.NotFound, $"No drink with id : {id}");
             }
 
-            return Ok(drink);
+            return Request.CreateResponse(HttpStatusCode.OK, drink);
         }
     }
 }
