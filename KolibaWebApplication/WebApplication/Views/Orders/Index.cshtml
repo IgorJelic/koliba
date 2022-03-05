@@ -1,7 +1,64 @@
-﻿
+﻿@using WebApplication.Models
+@model Order
+
+
 @{
     ViewBag.Title = "Your Orders";
 }
 
-<h2>Index</h2>
 
+@Styles.Render("~/Content/menu");
+@Scripts.Render("~/bundles/jquery");
+@Scripts.Render("~/bundles/menu");
+
+
+<div style="background-size: cover; height: 100%; width: 100%; background-color:#222">
+
+    @if (ViewBag.errMsg != null && ViewBag.errMsg != "")
+    {
+        <h3 style="font-weight: lighter; color: orangered; text-align: center; margin-bottom:20px">@ViewBag.errMsg</h3>
+    }
+    else
+    {
+        <h2>Porudžbina:</h2>
+        <hr />
+        if (Model.Meals.Count > 0)
+        {
+            <h4>Hrana:</h4>
+            <table class="table">
+                <tr>
+                    <th>Naziv</th>
+                    <th>Kolicina</th>
+                    <th>Cena</th>
+                    <th></th>
+                </tr>
+                @foreach (Meal meal in Model.Meals)
+                {
+                    <tr>
+                        <td style="text-transform: capitalize; color: navajowhite;">
+                            @meal.Name
+                        </td>
+                        <td style="color: navajowhite; text-align:center">
+                            @meal.Quantity
+                        </td>
+                        <td style="text-align: end; color: navajowhite;">
+                            @*@meal.CalculatePrice() din*@
+                            @meal.Price din
+                        </td>
+                        <td>
+                            <button class="btn-custom"><i style="transform: rotateX('45deg')" class="fa fa-plus" aria-hidden="true"></i></button>
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+        if (Model.Drinks.Count > 0)
+        {
+            <h4>Piće:</h4>
+            <table class="table">
+            </table>
+        }
+
+    }
+
+</div>

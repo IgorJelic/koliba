@@ -13,5 +13,11 @@ namespace WebApplication.Models
         public decimal Quantity { get; set; }
 
         public List<Order> Orders { get; set; }
+
+
+        public decimal CalculatePrice()
+        {
+            return Price * Quantity / 1000;
+        }
     }
 }

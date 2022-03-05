@@ -44,6 +44,16 @@ namespace WebApplication
             // script bundle
             bundles.Add(new ScriptBundle("~/bundles/menu").Include(
                 "~/Scripts/menu-script.js"));
+
+            // ORDER CONTROLLER
+            // style bundle
+            bundles.Add(new StyleBundle("~/Content/order").Include(
+                    "~/Content/bootstrap.css",
+                    "~/Content/order.css"));
+
+            // script bundle
+            bundles.Add(new ScriptBundle("~/bundles/order").Include(
+                "~/Scripts/order-script.js"));
         }
     }
 }
