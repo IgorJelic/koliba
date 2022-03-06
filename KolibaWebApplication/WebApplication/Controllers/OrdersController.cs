@@ -58,6 +58,11 @@ namespace WebApplication.Controllers
 
             }*/
 
+            if (currentUser.CurrentOrder.Meals.Count == 0 && currentUser.CurrentOrder.Drinks.Count == 0)
+            {
+                ViewBag.errMsg = "Korpa je trenutno prazna.";
+            }
+
 
             return View(currentUser.CurrentOrder);
         }

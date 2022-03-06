@@ -44,9 +44,10 @@
                 </td>
                 @if (Session["user"] != null)
                 {
-                    <td id="@item.Id">
+                    @*<td id="@item.Id">
+                    *@<td>
                         <span class="span1">
-                            <input id="@item.Id" style="color:#222;" class="input-custom" type="number" onkeydown="return false" min="100" value="0" max="1500" step="50" /> <span>gr</span>
+                            <input style="color:#222;" class="input-custom" type="number" onkeydown="return false" min="100" value="0" max="1500" step="50" /> <span>gr</span>
                         </span>
                         <button class="btn-custom btn-add-meal" data-idval="@item.Id"><i class="fa fa-plus" aria-hidden="true"></i></button>                        
                     </td>
