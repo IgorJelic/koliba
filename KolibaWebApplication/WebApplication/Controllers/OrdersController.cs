@@ -74,7 +74,18 @@ namespace WebApplication.Controllers
             if (Session["user"] != null)
             {
                 User currentUser = Session["user"] as Models.User;
-                currentUser.CurrentOrder.Meals.Add(m);
+                Meal tempMeal = currentUser.CurrentOrder.Meals.Where(me => me.Id == m.Id).FirstOrDefault();
+
+                if (tempMeal != null)
+                {
+                    var index = currentUser.CurrentOrder.Meals.IndexOf(tempMeal);
+                    currentUser.CurrentOrder.Meals[index].Quantity += m.Quantity;
+                    currentUser.CurrentOrder.Meals[index].Price += m.Price;
+                }
+                else
+                {
+                    currentUser.CurrentOrder.Meals.Add(m);
+                }
                 Session["user"] = currentUser;
             }
             else
@@ -91,7 +102,20 @@ namespace WebApplication.Controllers
             if (Session["user"] != null)
             {
                 User currentUser = Session["user"] as Models.User;
-                currentUser.CurrentOrder.Drinks.Add(d);
+
+                Drink tempDrink = currentUser.CurrentOrder.Drinks.Where(dr => dr.Id == d.Id).FirstOrDefault();
+
+                if (tempDrink != null)
+                {
+                    var index = currentUser.CurrentOrder.Drinks.IndexOf(tempDrink);
+                    currentUser.CurrentOrder.Drinks[index].Quantity += d.Quantity;
+                    currentUser.CurrentOrder.Drinks[index].Price += d.Price;
+                }
+                else
+                {
+                    currentUser.CurrentOrder.Drinks.Add(d);
+                }
+
                 Session["user"] = currentUser;
             }
             else

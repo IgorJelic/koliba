@@ -1,2 +1,32 @@
-﻿body {
+﻿.content {
+    padding: 20px 30px;
+    border-radius: 10px;
+    border: solid 2px #808080;
+    background-color: #2e2e2e;
+    color: white;
+}
+
+.btn-custom {
+    border-radius: 4px;
+    border: none;
+    color: whitesmoke;
+    background-color: #2e2e2e;
+    text-align: center;
+    padding-top: 2px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-custom:hover {
+    background-color: #222;
+    
+}
+
+.btn-order {
+    background-color: #0c4c7d;
+    font-size: 1.8rem;
+    padding: 6px 12px;
+}
+
+.btn-order:hover {
+    background-color: #072b47;
 }

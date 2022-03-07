@@ -12,7 +12,7 @@
 @Scripts.Render("~/bundles/order");
 
 
-<div style="background-size: cover; height: 100%; width: 100%; background-color:#222">
+<div style="background-size: cover; height: 100%; width: 100%; background-color:#222; display:flex; align-items: center; justify-content: center">
 
     @if (ViewBag.errMsg != null && ViewBag.errMsg != "")
     {
@@ -27,64 +27,76 @@
         <hr />
         @if (Model.Meals.Count > 0)
         {
-        <h4>Hrana:</h4>
-        <table class="table">
-            <tr>
-                <th>Naziv</th>
-                <th>Kolicina</th>
-                <th>Cena</th>
-                <th></th>
-            </tr>
-            @foreach (Meal meal in Model.Meals)
-            {
-                <tr>
-                    <td style="text-transform: capitalize; color: navajowhite;">
-                        @meal.Name
-                    </td>
-                    <td style="color: navajowhite; text-align:center">
-                        @meal.Quantity gr
-                    </td>
-                    <td style="text-align: end; color: navajowhite;">
-                        @*@meal.CalculatePrice() din*@
-                        @meal.Price din
-                    </td>
-                    <td>
-                        <button class="btn-custom"><i class="fa fa-times" aria-hidden="true"></i></button>
-                    </td>
-                </tr>
-            }
-        </table>
+            <h4>Hrana:</h4>
+            <table class="table">
+                @*<tr>
+                    <th>Naziv</th>
+                    <th>Kolicina</th>
+                    <th>Cena</th>
+                    <th></th>
+                </tr>*@
+                @foreach (Meal meal in Model.Meals)
+                {
+                    <tr>
+                        <td style="text-transform: capitalize; color: navajowhite;">
+                            @meal.Name
+                        </td>
+                        <td style="color: navajowhite; text-align:center">
+                            @meal.Quantity gr
+                        </td>
+                        <td style="text-align: end; color: navajowhite;">
+                            @*@meal.CalculatePrice() din*@
+                            @meal.Price din
+                        </td>
+                        <td>
+                            <button class="btn-custom"><i class="fa fa-times" aria-hidden="true"></i></button>
+                        </td>
+                    </tr>
+                }
+            </table>
         }
         @if (Model.Drinks.Count > 0)
         {
-        <hr />
-        <h4>Piće:</h4>
-        <table class="table">
-            <tr>
-                <th>Naziv</th>
-                <th>Kolicina</th>
-                <th>Cena</th>
-                <th></th>
-            </tr>
-            @foreach (Drink drink in Model.Drinks)
-            {
-                <tr>
-                    <td style="text-transform: capitalize; color: navajowhite;">
-                        @drink.Name
-                    </td>
-                    <td style="color: navajowhite; text-align:center">
-                        @drink.Quantity kom
-                    </td>
-                    <td style="text-align: end; color: navajowhite;">
-                        @*@meal.CalculatePrice() din*@
-                        @drink.Price din
-                    </td>
-                    <td>
-                        <button class="btn-custom"><i class="fa fa-times" aria-hidden="true"></i></button>
-                    </td>
-                </tr>
-            }
-        </table>
+            <hr />
+            <h4>Piće:</h4>
+            <table class="table">
+                @*<tr>
+                    <th>Naziv</th>
+                    <th>Kolicina</th>
+                    <th>Cena</th>
+                    <th></th>
+                </tr>*@
+                @foreach (Drink drink in Model.Drinks)
+                {
+                    <tr>
+                        <td style="text-transform: capitalize; color: navajowhite;">
+                            @drink.Name
+                        </td>
+                        <td style="color: navajowhite; text-align:center">
+                            @drink.Quantity kom
+                        </td>
+                        <td style="text-align: end; color: navajowhite;">
+                            @*@meal.CalculatePrice() din*@
+                            @drink.Price din
+                        </td>
+                        <td>
+                            <button class="btn-custom"><i class="fa fa-times" aria-hidden="true"></i></button>
+                        </td>
+                    </tr>
+                }
+            </table>
+
+            
+
+        }
+
+        @if (Model.Drinks.Count>0 || Model.Meals.Count>0)
+        {
+            <hr style="margin-bottom:4px;"/>
+            <div style="display: flex; flex-direction:column; align-items:center">
+                <h5 style="text-transform:uppercase; font-size:2rem">Cena: <span id="cena">580 din</span></h5>
+                <button class="btn-custom btn-order">Naruci</button>
+            </div>
         }
 
     </div>
