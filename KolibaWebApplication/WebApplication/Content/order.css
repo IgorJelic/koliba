@@ -30,3 +30,12 @@
 .btn-order:hover {
     background-color: #072b47;
 }
+
+.span-dostava{
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.span-dostava > select{
+    color: #222;
+}
