@@ -67,3 +67,14 @@
     z-index: -1;
     border-radius: 10px;
 }
+
+.message-home {
+    position: fixed;
+    right: 40px;
+    bottom: 30px;
+    padding: 20px 40px;
+    border: 1px solid green;
+    border-radius: 10px;
+    background-color: #2e392e;
+    color: #c5ffc5;
+}

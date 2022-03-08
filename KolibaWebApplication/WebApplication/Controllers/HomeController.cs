@@ -26,6 +26,8 @@ namespace WebApplication.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
+            ViewBag.Message = TempData["homeMessage"];
+            //ViewBag.Message = "Narudzbina Uspela";
 
             return View();
         }

@@ -1,14 +1,23 @@
 ﻿@Styles.Render("~/Content/home");
 
 <section id="hero">
-    
-        <div class="container">
-            <h1 class="hero-heading my-text-white">Koliba - <br />Burek ispod sača</h1>
-            <hr />
-            <p class="hero-lead lead my-text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut massa ac tortor mollis viverra. Curabitur vitae mattis lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam iaculis id quam eget mattis. Etiam sem sapien, suscipit et mattis vel, rutrum at enim.</p>
-            <p><a href="http://localhost:49693/" class="btn btn-primary btn-lg">Contact us &raquo;</a></p>
+
+    <div class="container">
+        <h1 class="hero-heading my-text-white">Koliba - <br />Burek ispod sača</h1>
+        <hr />
+        <p class="hero-lead lead my-text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut massa ac tortor mollis viverra. Curabitur vitae mattis lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam iaculis id quam eget mattis. Etiam sem sapien, suscipit et mattis vel, rutrum at enim.</p>
+        <p><a href="http://localhost:49693/" class="btn btn-primary btn-lg">Contact us &raquo;</a></p>
+    </div>
+
+    @if (ViewBag.Message != null && !String.IsNullOrWhiteSpace(ViewBag.Message))
+    {
+        <div class="message-home">
+            <h3 style="margin:0;">@ViewBag.Message</h3>
         </div>
-    
+    }
+
 </section>
+
+
 
 

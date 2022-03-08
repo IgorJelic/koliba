@@ -96,6 +96,7 @@ namespace WebApplication.Controllers
             return null;
         }
 
+        [HttpPost]
         [Route("orders/adddrink")]
         public ActionResult AddDrink(Drink d)
         {
@@ -126,5 +127,55 @@ namespace WebApplication.Controllers
             return null;
         }
 
+
+        [HttpGet]
+        [Route("orders/createOrder")]
+        public ActionResult CreateOrder()
+        {
+            if (Session["user"] != null)
+            {
+                User currentUser = Session["user"] as Models.User;
+
+                if (currentUser.MyOrders == null)
+                {
+                    currentUser.MyOrders = new List<Order>();
+                }
+
+                var currentOrder = currentUser.CurrentOrder;
+
+                currentUser.MyOrders.Add(currentOrder);
+
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("http://localhost:49693/api/createOrder/" + currentUser.Id);
+
+                    // HTTP POST
+
+                    var postTask = client.PostAsJsonAsync("", currentOrder);
+                    postTask.Wait();
+
+                    var result = postTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        currentUser.CurrentOrder = new Order();
+                        Session["user"] = currentUser;
+                        TempData["homeMessage"] = "Narudzbina Uspela";
+                        //return RedirectToAction("Index", "Home");
+                        return null;
+                    }
+                    else
+                    {
+                        Session["user"] = currentUser;
+                        TempData["homeMessage"] = "Narudzbina Nije Uspela";
+                        //return RedirectToAction("Index", "Home");
+                        return null;
+                    }
+                }                
+            }
+            else
+            {
+                return RedirectToAction("SignIn", "Home");
+            }
+        }
     }
 }
