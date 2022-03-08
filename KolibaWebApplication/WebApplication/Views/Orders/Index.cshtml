@@ -29,13 +29,7 @@
         {
             <h4>Hrana:</h4>
             <table class="table">
-                @*<tr>
-                    <th>Naziv</th>
-                    <th>Kolicina</th>
-                    <th>Cena</th>
-                    <th></th>
-                </tr>*@
-                @foreach (Meal meal in Model.Meals)
+                @foreach (MealHelper meal in Model.Meals)
                 {
                     <tr>
                         <td style="text-transform: capitalize; color: navajowhite;">
@@ -45,7 +39,6 @@
                             @meal.Quantity gr
                         </td>
                         <td style="text-align: end; color: navajowhite;">
-                            @*@meal.CalculatePrice() din*@
                             @meal.Price din
                         </td>
                         <td>
@@ -60,13 +53,7 @@
             <hr />
             <h4>Piće:</h4>
             <table class="table">
-                @*<tr>
-                    <th>Naziv</th>
-                    <th>Kolicina</th>
-                    <th>Cena</th>
-                    <th></th>
-                </tr>*@
-                @foreach (Drink drink in Model.Drinks)
+                @foreach (DrinkHelper drink in Model.Drinks)
                 {
                     <tr>
                         <td style="text-transform: capitalize; color: navajowhite;">
@@ -76,7 +63,6 @@
                             @drink.Quantity kom
                         </td>
                         <td style="text-align: end; color: navajowhite;">
-                            @*@meal.CalculatePrice() din*@
                             @drink.Price din
                         </td>
                         <td>
@@ -95,6 +81,7 @@
             <hr style="margin-bottom:4px;"/>
             <div style="display: flex; flex-direction:column; align-items:center">
                 <h5 style="text-transform:uppercase; font-size:2rem">Cena: <span id="cena">580 din</span></h5>
+                <span>Dostava? <select id="dostava"><option>Ne</option><option>Da</option></select></span>
                 <button id="btn-naruci" class="btn-custom btn-order">Naruci</button>
             </div>
         }

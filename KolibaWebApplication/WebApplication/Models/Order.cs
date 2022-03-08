@@ -12,8 +12,8 @@ namespace WebApplication.Models
 
         public HomeDelivery Delivery { get; set; }
 
-        public List<Meal> Meals { get; set; } = new List<Meal>();
-        public List<Drink> Drinks { get; set; } = new List<Drink>();
+        public List<MealHelper> Meals { get; set; } = new List<MealHelper>();
+        public List<DrinkHelper> Drinks { get; set; } = new List<DrinkHelper>();
 
         public User Customer { get; set; }
 

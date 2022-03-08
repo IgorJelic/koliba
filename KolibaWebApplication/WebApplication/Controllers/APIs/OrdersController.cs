@@ -37,6 +37,7 @@ namespace WebApplication.Controllers.APIs
             using (var db = new AppDbContext())
             {
                 var currentUser = db.Users.SingleOrDefault(u => u.Id == userId);
+                //var currentUser = db.Users.Include("MyOrders").SingleOrDefault(u => u.Id == userId);
 
                 if (currentUser != null)
                 {
@@ -44,19 +45,20 @@ namespace WebApplication.Controllers.APIs
                     {
                         currentUser.MyOrders = new List<Order>();
                     }
+                    
+                    order.Customer = currentUser;
+
                     currentUser.MyOrders.Add(order);
+                    db.Orders.Add(order);
+
+                    db.SaveChanges();
                 }
                 else
                 {
                     return Request.CreateResponse(HttpStatusCode.BadRequest, $"Korisnik userId: {userId} ne postoji.");
                 }
 
-                order.CreatedAt = DateTime.Now;
-                order.Delivery = Models.Enums.HomeDelivery.Yes;
-                order.Customer = currentUser;
-                db.Orders.Add(order);
-
-                db.SaveChanges();
+                
             }
 
             return Request.CreateResponse(HttpStatusCode.OK);

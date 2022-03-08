@@ -2,7 +2,7 @@
 
 namespace WebApplication.Models.DataBase.EntityConfigurations
 {
-    public class DrinkConfiguration : EntityTypeConfiguration<Drink>
+    public class DrinkConfiguration : EntityTypeConfiguration<DrinkHelper>
     {
         public DrinkConfiguration()
         {

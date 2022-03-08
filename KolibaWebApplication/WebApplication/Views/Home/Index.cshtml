@@ -11,9 +11,19 @@
 
     @if (ViewBag.Message != null && !String.IsNullOrWhiteSpace(ViewBag.Message))
     {
-        <div class="message-home">
-            <h3 style="margin:0;">@ViewBag.Message</h3>
-        </div>
+        if (ViewBag.Message == "Narudzbina Nije Uspela")
+        {
+            <div class="message-home failed">
+                <h3 style="margin:0;">@ViewBag.Message</h3>
+            </div>
+        }
+        else
+        {
+            <div class="message-home">
+                <h3 style="margin:0;">@ViewBag.Message</h3>
+            </div>
+        }
+
     }
 
 </section>

@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
 namespace WebApplication.Models
 {
-    public class Meal
+    public class MealHelper
     {
         public int Id { get; set; }
 
@@ -12,6 +15,6 @@ namespace WebApplication.Models
 
         public decimal Quantity { get; set; }
 
-        //public List<Order> Orders { get; set; }
+        public List<Order> Orders { get; set; }
     }
 }

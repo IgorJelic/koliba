@@ -9,6 +9,10 @@ namespace WebApplication.Models.DataBase
         public DbSet<Meal> Meals { get; set; }
         public DbSet<Drink> Drinks { get; set; }
         public DbSet<Order> Orders { get; set; }
+
+        public DbSet<MealHelper> MealHelpers { get; set; }
+        public DbSet<DrinkHelper> DrinkHelpers { get; set; }
+
         public DbSet<User> Users { get; set; }
         public DbSet<Salesman> Salesmans { get; set; }
         public DbSet<Administrator> Administrators { get; set; }

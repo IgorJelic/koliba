@@ -2,7 +2,7 @@
 
 namespace WebApplication.Models.DataBase.EntityConfigurations
 {
-    public class MealConfiguration : EntityTypeConfiguration<Meal>
+    public class MealConfiguration : EntityTypeConfiguration<MealHelper>
     {
         public MealConfiguration()
         {

@@ -180,6 +180,14 @@
     <Compile Include="Migrations\202202161358324_InitialCreate.designer.cs">
       <DependentUpon>202202161358324_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203081358588_UpdateDb.cs" />
+    <Compile Include="Migrations\202203081358588_UpdateDb.Designer.cs">
+      <DependentUpon>202203081358588_UpdateDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203081418273_UpdateDbAgain.cs" />
+    <Compile Include="Migrations\202203081418273_UpdateDbAgain.Designer.cs">
+      <DependentUpon>202203081418273_UpdateDbAgain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Administrator.cs" />
     <Compile Include="Models\DataBase\AppDbContext.cs" />
@@ -192,6 +200,8 @@
     <Compile Include="Models\Enums\Role.cs" />
     <Compile Include="Models\Meal.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\DrinkHelper.cs" />
+    <Compile Include="Models\MealHelper.cs" />
     <Compile Include="Models\Salesman.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -304,6 +314,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202202161358324_InitialCreate.resx">
       <DependentUpon>202202161358324_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203081358588_UpdateDb.resx">
+      <DependentUpon>202203081358588_UpdateDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203081418273_UpdateDbAgain.resx">
+      <DependentUpon>202203081418273_UpdateDbAgain.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -69,12 +69,14 @@ namespace WebApplication.Controllers
 
         [HttpPost]
         [Route("addmeal")]
-        public ActionResult AddMeal(Meal m)
+        public ActionResult AddMeal(MealHelper m)
         {
+            m.Id = 0;
+
             if (Session["user"] != null)
             {
                 User currentUser = Session["user"] as Models.User;
-                Meal tempMeal = currentUser.CurrentOrder.Meals.Where(me => me.Id == m.Id).FirstOrDefault();
+                MealHelper tempMeal = currentUser.CurrentOrder.Meals.Where(me => me.Name == m.Name).FirstOrDefault();
 
                 if (tempMeal != null)
                 {
@@ -98,13 +100,15 @@ namespace WebApplication.Controllers
 
         [HttpPost]
         [Route("orders/adddrink")]
-        public ActionResult AddDrink(Drink d)
+        public ActionResult AddDrink(DrinkHelper d)
         {
+            d.Id = 0;
+
             if (Session["user"] != null)
             {
                 User currentUser = Session["user"] as Models.User;
 
-                Drink tempDrink = currentUser.CurrentOrder.Drinks.Where(dr => dr.Id == d.Id).FirstOrDefault();
+                DrinkHelper tempDrink = currentUser.CurrentOrder.Drinks.Where(dr => dr.Name == d.Name).FirstOrDefault();
 
                 if (tempDrink != null)
                 {
@@ -129,8 +133,8 @@ namespace WebApplication.Controllers
 
 
         [HttpGet]
-        [Route("orders/createOrder")]
-        public ActionResult CreateOrder()
+        [Route("orders/createOrder/{delivery}")]
+        public ActionResult CreateOrder(Models.Enums.HomeDelivery delivery)
         {
             if (Session["user"] != null)
             {
@@ -140,6 +144,10 @@ namespace WebApplication.Controllers
                 {
                     currentUser.MyOrders = new List<Order>();
                 }
+
+                currentUser.CurrentOrder.CreatedAt = DateTime.Now;
+
+                currentUser.CurrentOrder.Delivery = delivery;
 
                 var currentOrder = currentUser.CurrentOrder;
 
@@ -160,14 +168,12 @@ namespace WebApplication.Controllers
                         currentUser.CurrentOrder = new Order();
                         Session["user"] = currentUser;
                         TempData["homeMessage"] = "Narudzbina Uspela";
-                        //return RedirectToAction("Index", "Home");
                         return null;
                     }
                     else
                     {
                         Session["user"] = currentUser;
                         TempData["homeMessage"] = "Narudzbina Nije Uspela";
-                        //return RedirectToAction("Index", "Home");
                         return null;
                     }
                 }                
