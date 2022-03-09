@@ -45,11 +45,11 @@ namespace WebApplication.Controllers.APIs
                     {
                         currentUser.MyOrders = new List<Order>();
                     }
-                    
-                    order.Customer = currentUser;
 
-                    currentUser.MyOrders.Add(order);
+                    order.CustomerId = userId;
                     db.Orders.Add(order);
+                    
+                    currentUser.MyOrders.Add(order);
 
                     db.SaveChanges();
                 }

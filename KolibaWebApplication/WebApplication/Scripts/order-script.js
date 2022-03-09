@@ -24,7 +24,6 @@
         }
     })
 
-    // TO DO, resi span #cena, dodaj klasu u sve td-ove sa cenama i saberi ih
     // TO DO, odradi brisanje itema iz narudzbine
 
 })

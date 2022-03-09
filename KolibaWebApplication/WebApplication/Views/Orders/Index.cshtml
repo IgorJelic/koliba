@@ -25,11 +25,11 @@
 
         <h2>Porudžbina:</h2>
         <hr />
-        @if (Model.Meals.Count > 0)
+        @if (Model.OrderedMeals.Count > 0)
         {
             <h4>Hrana:</h4>
             <table class="table">
-                @foreach (MealHelper meal in Model.Meals)
+                @foreach (MealHelper meal in Model.OrderedMeals)
                 {
                     <tr>
                         <td style="text-transform: capitalize; color: navajowhite;">
@@ -48,12 +48,12 @@
                 }
             </table>
         }
-        @if (Model.Drinks.Count > 0)
+        @if (Model.OrderedDrinks.Count > 0)
         {
             <hr />
             <h4>Piće:</h4>
             <table class="table">
-                @foreach (DrinkHelper drink in Model.Drinks)
+                @foreach (DrinkHelper drink in Model.OrderedDrinks)
                 {
                     <tr>
                         <td style="text-transform: capitalize; color: navajowhite;">
@@ -76,11 +76,11 @@
 
         }
 
-        @if (Model.Drinks.Count>0 || Model.Meals.Count>0)
+        @if (Model.OrderedDrinks.Count>0 || Model.OrderedMeals.Count>0)
         {
             <hr style="margin-bottom:4px;"/>
             <div style="display: flex; flex-direction:column; align-items:center">
-                <h5 style="text-transform:uppercase; font-size:2rem">Cena: <span id="cena">580 din</span></h5>
+                <h5 style="text-transform:uppercase; font-size:2rem">Cena: <span id="cena">@Model.SumPrice() din</span></h5>
                 <span class="span-dostava">Dostava: <select id="dostava"><option>Ne</option><option>Da</option></select></span>
                 <button id="btn-naruci" class="btn-custom btn-order">Naruci</button>
             </div>

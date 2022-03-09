@@ -10,24 +10,28 @@ namespace WebApplication.Models.DataBase.EntityConfigurations
                 .IsRequired()
                 .HasColumnName("Home Delivery");
 
-            HasMany(o => o.Meals)
+            Property(o => o.Delivered)
+                .HasColumnName("IsDelivered");
+
+            HasMany(o => o.OrderedMeals)
                 .WithMany(m => m.Orders)
                 .Map(m =>
                 {
                     m.ToTable("OrderedMeals");
                     m.MapLeftKey("OrderId");
-                    m.MapRightKey("MealId");
+                    m.MapRightKey("OrderedMealId");
                 });
 
-            HasMany(o => o.Drinks)
+            HasMany(o => o.OrderedDrinks)
                 .WithMany(d => d.Orders)
                 .Map(m =>
                 {
                     m.ToTable("OrderedDrinks");
                     m.MapLeftKey("OrderId");
-                    m.MapRightKey("DrinkId");
+                    m.MapRightKey("OrderedDrinkId");
 
-                }); 
+                });
+
         }
     }
 }

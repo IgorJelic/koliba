@@ -188,6 +188,22 @@
     <Compile Include="Migrations\202203081418273_UpdateDbAgain.Designer.cs">
       <DependentUpon>202203081418273_UpdateDbAgain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203091234108_AddedDeliveredFieldToOrders.cs" />
+    <Compile Include="Migrations\202203091234108_AddedDeliveredFieldToOrders.Designer.cs">
+      <DependentUpon>202203091234108_AddedDeliveredFieldToOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203091238485_AddedCustomerIdField.cs" />
+    <Compile Include="Migrations\202203091238485_AddedCustomerIdField.Designer.cs">
+      <DependentUpon>202203091238485_AddedCustomerIdField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203091310105_RenamingOrderConfigurationStuff.cs" />
+    <Compile Include="Migrations\202203091310105_RenamingOrderConfigurationStuff.Designer.cs">
+      <DependentUpon>202203091310105_RenamingOrderConfigurationStuff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203091325261_FixingForeignKeyOrderedMealsAndOrderedDrinks.cs" />
+    <Compile Include="Migrations\202203091325261_FixingForeignKeyOrderedMealsAndOrderedDrinks.Designer.cs">
+      <DependentUpon>202203091325261_FixingForeignKeyOrderedMealsAndOrderedDrinks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Administrator.cs" />
     <Compile Include="Models\DataBase\AppDbContext.cs" />
@@ -196,6 +212,7 @@
     <Compile Include="Models\DataBase\EntityConfigurations\OrderConfiguration.cs" />
     <Compile Include="Models\DataBase\EntityConfigurations\UserConfiguration.cs" />
     <Compile Include="Models\Drink.cs" />
+    <Compile Include="Models\Enums\Delivered.cs" />
     <Compile Include="Models\Enums\HomeDelivery.cs" />
     <Compile Include="Models\Enums\Role.cs" />
     <Compile Include="Models\Meal.cs" />
@@ -320,6 +337,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203081418273_UpdateDbAgain.resx">
       <DependentUpon>202203081418273_UpdateDbAgain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203091234108_AddedDeliveredFieldToOrders.resx">
+      <DependentUpon>202203091234108_AddedDeliveredFieldToOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203091238485_AddedCustomerIdField.resx">
+      <DependentUpon>202203091238485_AddedCustomerIdField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203091310105_RenamingOrderConfigurationStuff.resx">
+      <DependentUpon>202203091310105_RenamingOrderConfigurationStuff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203091325261_FixingForeignKeyOrderedMealsAndOrderedDrinks.resx">
+      <DependentUpon>202203091325261_FixingForeignKeyOrderedMealsAndOrderedDrinks.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

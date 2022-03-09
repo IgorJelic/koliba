@@ -18,7 +18,7 @@ namespace WebApplication.Controllers.APIs
 
 			using (var db = new AppDbContext())
 			{
-				//meals = db.Meals.Select(m => new Meal() { 
+				//meals = db.OrderedMeals.Select(m => new Meal() { 
 				//	Id = m.Id, 
 				//	Name = m.Name, 
 				//	Price = m.Price, 

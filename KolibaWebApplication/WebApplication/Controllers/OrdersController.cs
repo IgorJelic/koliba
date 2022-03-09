@@ -58,7 +58,7 @@ namespace WebApplication.Controllers
 
             }*/
 
-            if (currentUser.CurrentOrder.Meals.Count == 0 && currentUser.CurrentOrder.Drinks.Count == 0)
+            if (currentUser.CurrentOrder.OrderedMeals.Count == 0 && currentUser.CurrentOrder.OrderedDrinks.Count == 0)
             {
                 ViewBag.errMsg = "Korpa je trenutno prazna.";
             }
@@ -76,17 +76,17 @@ namespace WebApplication.Controllers
             if (Session["user"] != null)
             {
                 User currentUser = Session["user"] as Models.User;
-                MealHelper tempMeal = currentUser.CurrentOrder.Meals.Where(me => me.Name == m.Name).FirstOrDefault();
+                MealHelper tempMeal = currentUser.CurrentOrder.OrderedMeals.Where(me => me.Name == m.Name).FirstOrDefault();
 
                 if (tempMeal != null)
                 {
-                    var index = currentUser.CurrentOrder.Meals.IndexOf(tempMeal);
-                    currentUser.CurrentOrder.Meals[index].Quantity += m.Quantity;
-                    currentUser.CurrentOrder.Meals[index].Price += m.Price;
+                    var index = currentUser.CurrentOrder.OrderedMeals.IndexOf(tempMeal);
+                    currentUser.CurrentOrder.OrderedMeals[index].Quantity += m.Quantity;
+                    currentUser.CurrentOrder.OrderedMeals[index].Price += m.Price;
                 }
                 else
                 {
-                    currentUser.CurrentOrder.Meals.Add(m);
+                    currentUser.CurrentOrder.OrderedMeals.Add(m);
                 }
                 Session["user"] = currentUser;
             }
@@ -108,17 +108,17 @@ namespace WebApplication.Controllers
             {
                 User currentUser = Session["user"] as Models.User;
 
-                DrinkHelper tempDrink = currentUser.CurrentOrder.Drinks.Where(dr => dr.Name == d.Name).FirstOrDefault();
+                DrinkHelper tempDrink = currentUser.CurrentOrder.OrderedDrinks.Where(dr => dr.Name == d.Name).FirstOrDefault();
 
                 if (tempDrink != null)
                 {
-                    var index = currentUser.CurrentOrder.Drinks.IndexOf(tempDrink);
-                    currentUser.CurrentOrder.Drinks[index].Quantity += d.Quantity;
-                    currentUser.CurrentOrder.Drinks[index].Price += d.Price;
+                    var index = currentUser.CurrentOrder.OrderedDrinks.IndexOf(tempDrink);
+                    currentUser.CurrentOrder.OrderedDrinks[index].Quantity += d.Quantity;
+                    currentUser.CurrentOrder.OrderedDrinks[index].Price += d.Price;
                 }
                 else
                 {
-                    currentUser.CurrentOrder.Drinks.Add(d);
+                    currentUser.CurrentOrder.OrderedDrinks.Add(d);
                 }
 
                 Session["user"] = currentUser;
@@ -146,8 +146,8 @@ namespace WebApplication.Controllers
                 }
 
                 currentUser.CurrentOrder.CreatedAt = DateTime.Now;
-
                 currentUser.CurrentOrder.Delivery = delivery;
+                currentUser.CurrentOrder.Delivered = Models.Enums.Delivered.No;
 
                 var currentOrder = currentUser.CurrentOrder;
 
