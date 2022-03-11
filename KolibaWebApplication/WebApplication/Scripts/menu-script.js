@@ -33,8 +33,10 @@
 
             $.post(postUrl, meal, (data, status, xhr) => {
                 input.val(0);
-                alert('Posted meal ' + JSON.stringify(meal));
+                //alert('Posted meal ' + JSON.stringify(meal));
             });
+
+            window.location.href = "Index";
         })
 
     })
@@ -70,8 +72,10 @@
 
             $.post(postUrl, drink, (data, status, xhr) => {
                 input.val(0);
-                alert('Posted drink ' + JSON.stringify(drink));
+                //alert('Posted drink ' + JSON.stringify(drink));
             });
+
+            window.location.href = "Index";
         })
 
     })

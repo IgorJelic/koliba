@@ -15,7 +15,21 @@
     }
     else
     {
-        @Html.Partial("_NavBarLoggedIn");
+        WebApplication.Models.User currUser = Session["User"] as WebApplication.Models.User;
+
+        if (currUser.Role == WebApplication.Models.Enums.Role.User)
+        {
+            @*@Html.Partial("_NavBarLoggedIn");*@
+            @Html.Partial("_NavBarLoggedIn_User", currUser);
+        }
+        else if (currUser.Role == WebApplication.Models.Enums.Role.Salesman)
+        {
+            @Html.Partial("_NavBarLoggedIn_Salesman");
+        }
+        else
+        {
+            @Html.Partial("_NavBarLoggedIn_Administrator");
+        }
     }
 
     <div style="height: 100%; width: 100%; position:fixed;">

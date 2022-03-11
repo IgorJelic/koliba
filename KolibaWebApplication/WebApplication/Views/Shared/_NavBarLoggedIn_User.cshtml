@@ -1,0 +1,34 @@
+﻿@model WebApplication.Models.User
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="~/Home/Index" class="navbar-brand icon" style="margin-right: 24px; font-size: large;"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+                <li><a href="~/Menu/Index" class="navbar-brand icon" style="margin-right: 24px; font-size: large;"><i class="fa fa-cutlery" aria-hidden="true"></i></a></li>
+                <li><a href="~/Contact/Index" class="navbar-brand icon" style="font-size: large;"><i class="fa fa-phone  " aria-hidden="true"></i></a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="~/Orders/Index" style="font-size: 18px;">
+                        <i class="fa fa-shopping-cart" aria-hidden="true" style="position: relative; font-size: 22px;">
+                            @if (Model.GetCurrentOrdersCount() > 0)
+                            {
+                                <span style="position: absolute; top: -5px; right: -8px; font-size: 10px; font-weight: bold;
+                                color: navajowhite; background-color: #3d3d3d; padding: 2px; border: none;
+                                border-radius: 50%; height: 14px; width: 14px; text-align: center; ">
+                                    @Model.GetCurrentOrdersCount()
+                                </span>
+                            }
+                        </i></a></li>
+                <li><a href="~/Home/SignOutUser" style="font-size: 16px; padding-top: 16px; padding-bottom: 16px;">Sign Out</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

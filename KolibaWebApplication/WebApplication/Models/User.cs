@@ -30,5 +30,10 @@ namespace WebApplication.Models
         {
             CurrentOrder = new Order();
         }
+
+        public int GetCurrentOrdersCount()
+        {
+            return CurrentOrder.OrderedMeals.Count() + CurrentOrder.OrderedDrinks.Count();
+        }
     }
 }

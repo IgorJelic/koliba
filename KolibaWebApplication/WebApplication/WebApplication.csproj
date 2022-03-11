@@ -294,6 +294,9 @@
     <Content Include="Views\Menu\Index.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\Shared\_NavBarLoggedIn_Salesman.cshtml" />
+    <Content Include="Views\Shared\_NavBarLoggedIn_User.cshtml" />
+    <Content Include="Views\Shared\_NavBarLoggedIn_Administrator.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
