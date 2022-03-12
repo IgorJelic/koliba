@@ -11,22 +11,28 @@ namespace WebApplication.Controllers
 {
     public class HomeController : Controller
     {
-        private AppDbContext _context;
+        //private AppDbContext _context;
 
-        public HomeController()
-        {
-            _context = new AppDbContext();
-        }
+        //public HomeController()
+        //{
+        //    _context = new AppDbContext();
+        //}
 
-        protected override void Dispose(bool disposing)
-        {
-            _context.Dispose();
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    _context.Dispose();
+        //}
 
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
             ViewBag.Message = TempData["homeMessage"];
+
+            if (Session["user"] != null)
+            {
+                var currentUser = Session["user"] as Models.User;
+                return View(currentUser);
+            }
 
             return View();
         }

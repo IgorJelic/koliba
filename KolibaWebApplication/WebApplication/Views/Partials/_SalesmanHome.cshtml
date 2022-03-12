@@ -1,0 +1,16 @@
+﻿@model WebApplication.Models.User
+
+<section id="hero">
+
+    <div class="container" style="position:relative;">
+        <h1 class="hero-heading my-text-white">Dobrodosao,<br /> @Model.FirstName @Model.LastName</h1>
+        <hr />
+        @*<p class="hero-lead lead my-text-white date">Danas je: @DateTime.Now.ToString("dd. MMMM yyyy").</p>*@
+        <p class="hero-lead lead my-text-white date" style="position: absolute; bottom: 0; right: 0; margin: 0"> @DateTime.Now.ToString("dd. MMMM yyyy").</p>
+        @*<hr />*@
+
+        <p class="hero-lead lead my-text-white">Mogucnosti prodavca su pregled svih narudzbina u sistemu.<br />Narudzbina moze da se procita i obradi. Kada je obradjena i poslata, potrebno je oznaciti je kao "Delivered".</p>
+        <p><a href="http://localhost:49693/" class="btn btn-primary btn-lg">Orders manager &raquo;</a></p>
+    </div>
+
+</section>

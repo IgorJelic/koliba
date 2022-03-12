@@ -84,3 +84,9 @@
     background-color: #392e2e;
     color: #ffc5c5;
 }
+
+.date {
+    opacity: 1;
+    font-size: 30px;
+    text-transform: capitalize;
+}

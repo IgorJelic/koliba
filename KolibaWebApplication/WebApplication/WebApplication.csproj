@@ -297,10 +297,15 @@
     <Content Include="Views\Shared\_NavBarLoggedIn_Salesman.cshtml" />
     <Content Include="Views\Shared\_NavBarLoggedIn_User.cshtml" />
     <Content Include="Views\Shared\_NavBarLoggedIn_Administrator.cshtml" />
+    <Content Include="Views\Partials\_AdminHome.cshtml" />
+    <Content Include="Views\Partials\_SalesmanHome.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\ViewModels\" />
+    <Folder Include="Views\Shared\AdminPartials\" />
+    <Folder Include="Views\Shared\SalesmanPartials\" />
+    <Folder Include="Views\Shared\UserPartials\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

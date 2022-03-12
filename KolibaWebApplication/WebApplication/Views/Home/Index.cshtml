@@ -1,32 +1,68 @@
-﻿@Styles.Render("~/Content/home");
+﻿@model WebApplication.Models.User
 
-<section id="hero">
+@Styles.Render("~/Content/home");
 
-    <div class="container">
-        <h1 class="hero-heading my-text-white">Koliba - <br />Burek ispod sača</h1>
-        <hr />
-        <p class="hero-lead lead my-text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut massa ac tortor mollis viverra. Curabitur vitae mattis lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam iaculis id quam eget mattis. Etiam sem sapien, suscipit et mattis vel, rutrum at enim.</p>
-        <p><a href="http://localhost:49693/" class="btn btn-primary btn-lg">Contact us &raquo;</a></p>
-    </div>
+@if (Model != null)
+{
 
-    @if (ViewBag.Message != null && !String.IsNullOrWhiteSpace(ViewBag.Message))
+    if (Model.Role == WebApplication.Models.Enums.Role.Administrator)
     {
-        if (ViewBag.Message == "Narudzbina Nije Uspela")
-        {
-            <div class="message-home failed">
-                <h3 style="margin:0;">@ViewBag.Message</h3>
+        Html.RenderPartial("~/Views/Partials/_AdminHome.cshtml");
+    }
+    else if(Model.Role == WebApplication.Models.Enums.Role.Salesman)
+    {
+        Html.RenderPartial("~/Views/Partials/_SalesmanHome.cshtml", Model);
+    }
+    else if (Model.Role == WebApplication.Models.Enums.Role.User)
+    {
+        <section id="hero">
+
+            <div class="container">
+                <h1 class="hero-heading my-text-white">Koliba - <br />Burek ispod sača</h1>
+                <hr />
+                <p class="hero-lead lead my-text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut massa ac tortor mollis viverra. Curabitur vitae mattis lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam iaculis id quam eget mattis. Etiam sem sapien, suscipit et mattis vel, rutrum at enim.</p>
+                <p><a href="http://localhost:49693/" class="btn btn-primary btn-lg">Contact us &raquo;</a></p>
             </div>
-        }
-        else
-        {
-            <div class="message-home">
-                <h3 style="margin:0;">@ViewBag.Message</h3>
-            </div>
-        }
+
+            @if (ViewBag.Message != null && !String.IsNullOrWhiteSpace(ViewBag.Message))
+            {
+                if (ViewBag.Message == "Narudzbina Nije Uspela")
+                {
+                    <div class="message-home failed">
+                        <h3 style="margin:0;">@ViewBag.Message</h3>
+                    </div>
+                }
+                else
+                {
+                    <div class="message-home">
+                        <h3 style="margin:0;">@ViewBag.Message</h3>
+                    </div>
+                }
+
+            }
+
+        </section>
 
     }
 
-</section>
+
+}
+else
+{
+    <section id="hero">
+
+        <div class="container">
+            <h1 class="hero-heading my-text-white">Koliba - <br />Burek ispod sača</h1>
+            <hr />
+            <p class="hero-lead lead my-text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut massa ac tortor mollis viverra. Curabitur vitae mattis lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam iaculis id quam eget mattis. Etiam sem sapien, suscipit et mattis vel, rutrum at enim.</p>
+            <p><a href="http://localhost:49693/" class="btn btn-primary btn-lg">Contact us &raquo;</a></p>
+        </div>
+
+    </section>
+}
+
+
+
 
 
 
