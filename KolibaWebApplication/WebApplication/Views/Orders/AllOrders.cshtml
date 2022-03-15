@@ -1,0 +1,98 @@
+﻿@using WebApplication.Models
+@model IList<WebApplication.Models.Order>
+
+@{
+    ViewBag.Title = "AllOrders";
+}
+
+@Styles.Render("~/Content/order");
+@Scripts.Render("~/bundles/jquery");
+@Scripts.Render("~/bundles/order");
+
+<div style="background-size: cover; height: 100%; width: 100%; background-color:#222">
+
+
+    <h2>Modal Example</h2>
+
+    <!-- Trigger/Open The Modal -->
+    <button id="myBtn">Open Modal</button>
+
+    <h2 style="font-size:36px; font-weight:500; text-align: center; margin-top: 0px; padding-top:40px; color:navajowhite">ALL ORDERS</h2>
+
+    <hr style="margin-top:10px;" />
+
+    <div class="content" style="margin: 50px 230px; overflow-y:scroll; overflow-x:hidden">
+
+        <table class="table">
+            <tr>
+                <th>Id</th>
+                <th style="text-align:center">Cena (din/kg)</th>
+                <th style="text-align:center">Datum</th>
+                <th style="text-align:center">Dostava</th>
+                <th style="text-align:center">Dostavljeno</th>
+                <th style="width: 120px;"></th>
+            </tr>
+
+            @foreach (Order item in Model)
+            {
+                <tr>
+                    <td style="text-transform: capitalize; color: navajowhite;">
+                        @item.Id
+                    </td>
+                    <td style="color: navajowhite; text-align: center">
+                        @item.SumPrice() din
+                    </td>
+                    <td style="color: navajowhite; text-align: center">
+                        @item.CreatedAt.ToString("dd. MMMM yyyy H:mm")
+                    </td>
+                    <td style="color: navajowhite; text-align: center">
+                        @item.Delivery
+                    </td>
+                    @if (item.Delivery == WebApplication.Models.Enums.HomeDelivery.Yes)
+                    {
+                        if (item.Delivered == WebApplication.Models.Enums.Delivered.No)
+                        {
+                            <td style="color: orangered; text-align: center">
+                                @item.Delivered
+                            </td>
+                        }
+                        else
+                        {
+                            <td style="color: lawngreen; text-align: center">
+                                @item.Delivered
+                            </td>
+                        }
+                    }
+                    else
+                    {
+                        <td style="color: navajowhite; text-align: center">
+                            /
+                        </td>
+                    }
+
+
+                    <td style="text-align: end;">
+                        @*<button class="btn-order-details btn-custom" type="button" style="text-align:center"><i class="fa fa-info" aria-hidden="true"></i></button>*@
+                        <button class="btn-order-details btn-custom" data-idval="@item.Id" type="button" style="text-align:center">Details</button>
+                    </td>
+                </tr>
+            }
+        </table>
+
+    </div>
+
+</div>
+
+
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
+
+</div>

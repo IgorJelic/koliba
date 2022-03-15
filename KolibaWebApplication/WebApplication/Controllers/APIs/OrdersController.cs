@@ -11,6 +11,43 @@ namespace WebApplication.Controllers.APIs
 {
     public class OrdersController : ApiController
     {
+        [Route("api/orders")]
+        public HttpResponseMessage GetAllOrders()
+        {
+            ICollection<Order> allOrders = null;
+
+            using (var db = new AppDbContext())
+            {
+                //allOrders = db.Orders.Include("OrderedMeals").Include("OrderedDrinks").ToList<Order>();
+                allOrders = db.Orders.Include("OrderedMeals").Include("OrderedDrinks").ToList<Order>();
+            }
+
+            if (allOrders.Count == 0)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, "No orders.");
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, allOrders);
+        }
+
+        [Route("api/orders/{orderId}")]
+        public HttpResponseMessage GetOrder(int orderId)
+        {
+            Order order = null;
+
+            using (var db = new AppDbContext())
+            {
+                order = db.Orders.Include("OrderedMeals").Include("OrderedDrinks").FirstOrDefault(o => o.Id == orderId);
+            }
+
+            if (order == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound, $"No order with ID : {orderId}.");
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, order);
+        }
+
         [Route("api/userorders/{userId}")]
         public HttpResponseMessage GetUserOrders(int userId)
         {

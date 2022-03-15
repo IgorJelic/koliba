@@ -25,38 +25,45 @@ namespace WebApplication.Controllers
                 return RedirectToAction("SignIn", "Home");
             }
 
-            /*using (var client = new HttpClient())
+            if (currentUser.Role == Models.Enums.Role.Administrator || currentUser.Role == Models.Enums.Role.Salesman)
             {
-                int currentUserId = currentUser.Id;
-
-                client.BaseAddress = new Uri("http://localhost:49693/api/userorders/" + currentUserId.ToString());
-
-                var responseTask = client.GetAsync("");
-                responseTask.Wait();
-
-                var responseResult = responseTask.Result;
-
-                if (responseResult.IsSuccessStatusCode)
+                using (var client = new HttpClient())
                 {
-                    var readTask = responseResult.Content.ReadAsAsync<IList<Order>>();
-                    readTask.Wait();
+                    IList<Order> allOrders = null;
 
-                    orders = readTask.Result;
-                }
-                else if (responseResult.StatusCode == System.Net.HttpStatusCode.NotFound)
-                {
-                    var readTask = responseResult.Content.ReadAsStringAsync();
-                    readTask.Wait();
+                    client.BaseAddress = new Uri("http://localhost:49693/api/orders");
 
-                    var errMsg = readTask.Result;
-                    ViewBag.errMsg = errMsg;
-                }
-                else
-                {
-                    return RedirectToAction("Index", "Home");
-                }
+                    var responseTask = client.GetAsync("");
+                    responseTask.Wait();
 
-            }*/
+                    var responseResult = responseTask.Result;
+
+                    if (responseResult.IsSuccessStatusCode)
+                    {
+                        var readTask = responseResult.Content.ReadAsAsync<IList<Order>>();
+                        readTask.Wait();
+
+                        allOrders = readTask.Result;
+                    }
+                    else if (responseResult.StatusCode == System.Net.HttpStatusCode.NotFound)
+                    {
+                        var readTask = responseResult.Content.ReadAsStringAsync();
+                        readTask.Wait();
+
+                        var errMsg = readTask.Result;
+                        ViewBag.errMsg = errMsg;
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+
+                    return View("AllOrders", allOrders);
+
+                }
+            }
+
+
 
             if (currentUser.CurrentOrder.OrderedMeals.Count == 0 && currentUser.CurrentOrder.OrderedDrinks.Count == 0)
             {
