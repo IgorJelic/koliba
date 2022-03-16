@@ -11,15 +11,9 @@
 
 <div style="background-size: cover; height: 100%; width: 100%; background-color:#222">
 
+    <h2 style="font-size:36px; font-weight:500; text-align: center; margin-top: 20px; padding-top:40px; color:navajowhite">ALL ORDERS</h2>
 
-    <h2>Modal Example</h2>
-
-    <!-- Trigger/Open The Modal -->
-    <button id="myBtn">Open Modal</button>
-
-    <h2 style="font-size:36px; font-weight:500; text-align: center; margin-top: 0px; padding-top:40px; color:navajowhite">ALL ORDERS</h2>
-
-    <hr style="margin-top:10px;" />
+    <hr style="margin-top:10px; width:44%" />
 
     <div class="content" style="margin: 50px 230px; overflow-y:scroll; overflow-x:hidden">
 
@@ -73,7 +67,7 @@
 
                     <td style="text-align: end;">
                         @*<button class="btn-order-details btn-custom" type="button" style="text-align:center"><i class="fa fa-info" aria-hidden="true"></i></button>*@
-                        <button class="btn-order-details btn-custom" data-idval="@item.Id" type="button" style="text-align:center">Details</button>
+                        <button class="btn-order-details btn-custom" data-idval="@item.Id" data-sumprice="@item.SumPrice()" type="button" style="text-align:center">Details</button>
                     </td>
                 </tr>
             }
@@ -92,7 +86,23 @@
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-    <p>Some text in the Modal..</p>
+    <div class="modal-custom-basic-info">
+        <h3 id="order-id"></h3>
+    </div>
+      <hr style="border-top: 1px solid #222"/>
+    <div style="display: flex; flex-direction: row; align-content: center; justify-content: space-evenly;">
+        <div class="modal-custom-list meals" id="meals">
+            <p class="meal">Burek (400g)</p>
+            <p class="meal">Pita sa visnjama (200g)</p>
+        </div>
+        <div class="modal-custom-list drinks" id="drinks">
+            <p class="drink">Jogurt (2 kom)</p>
+        </div>
+    </div>
+    <hr style="border-top: 1px solid #222"/>
+    <div class="modal-custom-price" >
+        <p class="price" id="price"></p>
+    </div>
   </div>
 
 </div>
