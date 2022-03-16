@@ -1,0 +1,85 @@
+﻿.content-container {
+    display: flex;
+    gap: 100px;
+    width: 100%;
+    /* height: 100%; */
+    justify-content: center;
+    align-items: center;
+}
+
+.heading {
+    font-size: 36px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 0px;
+    padding-top: 40px;
+    color: navajowhite;
+}
+
+.left-content,
+.right-content {
+    min-width: 400px;
+    width: 500px;
+    padding: 20px 30px;
+    border-radius: 10px;
+    border: solid 2px #808080;
+    background-color: #2e2e2e;
+    color: white;
+
+    position:relative;
+}
+
+.left-content > h4,
+.right-content > h4 {
+    font-size: 2.2rem;
+    text-align: center;
+    text-transform: capitalize;
+    /*color: navajowhite;*/
+    font-weight: 400;
+
+    /*text-decoration: underline;*/
+}
+
+.left-content > span,
+.right-content > span {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    top: 24px;
+    right: 20px;
+    /*color: greenyellow;*/
+    font-size: 2rem;
+    border: 1px solid greenyellow;
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    /*box-shadow: rgba(0, 0, 0, 0.8) 0px 0px 5px;*/
+}
+
+.left-content > h5,
+.right-content > h5 {
+    margin-top: 20px;
+    text-align:center;
+    font-size:1.8rem;
+
+    opacity: 0.7;
+}
+
+.phone {
+    margin-right: 6px;
+    color: greenyellow;
+}
+
+/* Set the size of the div element that contains the map */
+#map1,
+#map2 {
+    height: 280px;
+    /* The height is 400 pixels */
+    width: 100%;
+    /* The width is the width of the web page */
+
+    border-radius:10px;
+}

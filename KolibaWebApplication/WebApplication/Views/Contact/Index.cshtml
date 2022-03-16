@@ -3,5 +3,46 @@
     ViewBag.Title = "Contact";
 }
 
-<h2>Index</h2>
+@Styles.Render("~/Content/contact");
+@Scripts.Render("~/bundles/jquery");
+@Scripts.Render("~/bundles/contact");
 
+<div style="background-size: cover; height: 100%; width: 100%; background-color:#222">
+
+    <h2 class="heading">LOKACIJE</h2>
+
+    <hr style="margin-top: 10px; margin-bottom: 40px;" />
+
+    <div class="content-container">
+        <div class="left-content">
+            <h4>Veselina Maslese, 32</h4>
+            <span>1</span>
+            <h5><i class="fa fa-phone phone" aria-hidden="true"></i>064 37 300 27</h5>
+
+            <hr />
+
+            <div class="map-container">
+
+                <div id="map1">
+
+                </div>
+
+            </div>
+        </div>
+        <div class="right-content">
+            <h4>Strazilovska, 14</h4>
+            <span>2</span>
+            <h5><i class="fa fa-phone phone" aria-hidden="true"></i>065 37 300 27</h5>
+
+            <hr />
+
+            <div class="map-container">
+
+                <div id="map2">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
