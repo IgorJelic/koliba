@@ -23,6 +23,32 @@
 
     // TO DO, odradi brisanje itema iz narudzbine
 
+    $(".delete-meal").click((e) => {
+        const mealName = $(e.currentTarget).data('mealname');
+
+        var actionUrl = "http://localhost:49693/orders/removemeal?mealName=" + mealName;
+
+        $.get(actionUrl);
+
+        var millisecondsToWait = 100;
+        setTimeout(function () {
+            window.location.href = "/Orders/Index";
+        }, millisecondsToWait);
+
+    })
+
+    $(".delete-drink").click((e) => {
+        const drinkName = $(e.currentTarget).data('drinkname');
+
+        var actionUrl = "http://localhost:49693/orders/removedrink?drinkName=" + drinkName;
+
+        $.get(actionUrl);
+
+        var millisecondsToWait = 100;
+        setTimeout(function () {
+            window.location.href = "/Orders/Index";
+        }, millisecondsToWait);
+    })
 
 
     $(".btn-order-details").click((e) => {

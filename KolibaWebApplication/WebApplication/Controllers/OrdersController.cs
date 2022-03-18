@@ -74,6 +74,40 @@ namespace WebApplication.Controllers
             return View(currentUser.CurrentOrder);
         }
 
+        [HttpGet]
+        [Route("removemeal/{mealName}")]
+        public ActionResult RemoveMeal(string mealName)
+        {
+            if (Session["user"] != null)
+            {
+                User currentUser = Session["user"] as User;
+
+                //currentUser.CurrentOrder.OrderedMeals.RemoveAll(m => m.Name.ToLower().Equals(mealName.ToLower()));
+                currentUser.CurrentOrder.OrderedMeals.RemoveAll(m => m.Name.Equals(mealName));
+
+                Session["user"] = currentUser;
+            }
+
+            return null;
+        }
+
+        [HttpGet]
+        [Route("removedrink/{drinkName}")]
+        public ActionResult RemoveDrink(string drinkName)
+        {
+            if (Session["user"] != null)
+            {
+                User currentUser = Session["user"] as User;
+
+                //currentUser.CurrentOrder.OrderedMeals.RemoveAll(m => m.Name.ToLower().Equals(mealName.ToLower()));
+                currentUser.CurrentOrder.OrderedDrinks.RemoveAll(d => d.Name.Equals(drinkName));
+
+                Session["user"] = currentUser;
+            }
+
+            return null;
+        }
+
         [HttpPost]
         [Route("addmeal")]
         public ActionResult AddMeal(MealHelper m)
