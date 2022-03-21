@@ -168,11 +168,13 @@
     <Compile Include="Controllers\APIs\DrinksController.cs" />
     <Compile Include="Controllers\APIs\MealsController.cs" />
     <Compile Include="Controllers\APIs\OrdersController.cs" />
+    <Compile Include="Controllers\APIs\SalesmansController.cs" />
     <Compile Include="Controllers\APIs\UsersController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\SalesmansController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -307,6 +309,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\ViewModels\" />
+    <Folder Include="Views\Salesmans\" />
     <Folder Include="Views\Shared\AdminPartials\" />
     <Folder Include="Views\Shared\SalesmanPartials\" />
     <Folder Include="Views\Shared\UserPartials\" />

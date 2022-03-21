@@ -94,32 +94,6 @@ namespace WebApplication.Controllers.APIs
             return Request.CreateResponse(HttpStatusCode.OK, user);
         }
 
-        [HttpPost]
-        [Route("api/registerSalesman")]
-        public IHttpActionResult RegisterSalesman(User user)
-        {
-            if (!ValidateUser(user))
-            {
-                return BadRequest("Invalid data..");
-            }
-
-            using (var db = new AppDbContext())
-            {
-                db.Salesmans.Add(new Models.Salesman()
-                {
-                    FirstName = user.FirstName,
-                    LastName = user.LastName,
-                    Username = user.Username,
-                    Password = user.Password,
-                    Role = Models.Enums.Role.Salesman
-                });
-
-                db.SaveChanges();
-            }
-
-            return Ok(user);
-        }
-
         private bool ValidateUser(User u)
         {
             if (string.IsNullOrWhiteSpace(u.FirstName))
