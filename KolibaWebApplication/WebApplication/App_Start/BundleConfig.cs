@@ -64,6 +64,16 @@ namespace WebApplication
             // script bundle
             bundles.Add(new ScriptBundle("~/bundles/contact").Include(
                 "~/Scripts/contact-script.js"));
+
+            // SALESMANS CONTROLLER
+            // style bundle
+            bundles.Add(new StyleBundle("~/Content/employees").Include(
+                    "~/Content/bootstrap.css",
+                    "~/Content/employees.css"));
+
+            // script bundle
+            bundles.Add(new ScriptBundle("~/bundles/employees").Include(
+                "~/Scripts/employees-script.js"));
         }
     }
 }

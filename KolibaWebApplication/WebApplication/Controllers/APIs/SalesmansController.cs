@@ -35,16 +35,40 @@ namespace WebApplication.Controllers.APIs
         [Route("api/addsalesman")]
         public HttpResponseMessage AddSalesman(User salesman)
         {
-            User retVal = null;
+            if (!ValidateUser(salesman))
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "Invalid data");
+            }
+
+            User tempSalesman = salesman;
+            tempSalesman.Role = Models.Enums.Role.Salesman;
 
             using (var db = new AppDbContext())
             {
-                retVal = db.Users.Add(salesman);
+                if (db.Users.Count() != 0)
+                {
+                    if (db.Users.Any(u => u.Username.Equals(salesman.Username)))
+                    {
+                        return Request.CreateResponse(HttpStatusCode.BadRequest, "Username already exists..");
+                    }
+                }
+
+                tempSalesman = db.Users.Add(tempSalesman);
+
+                //db.Users.Add(new Models.User()
+                //{
+                //    FirstName = salesman.FirstName,
+                //    LastName = salesman.LastName,
+                //    Username = salesman.Username,
+                //    Password = salesman.Password,
+                //    Role = Models.Enums.Role.Salesman
+                //});
 
                 db.SaveChanges();
             }
 
-            if (retVal != null)
+
+            if (tempSalesman != null)
             {
                 return Request.CreateResponse(HttpStatusCode.OK, "New salesman added!");
             }
@@ -52,6 +76,8 @@ namespace WebApplication.Controllers.APIs
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, "Failed to add new salesman!");
             }
+
+            //return Request.CreateResponse(HttpStatusCode.OK, tempSalesman);
         }
 
         [HttpDelete]
@@ -80,6 +106,30 @@ namespace WebApplication.Controllers.APIs
             else
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, "RemoveSalesman failed!");
+            }
+        }
+
+        private bool ValidateUser(User u)
+        {
+            if (string.IsNullOrWhiteSpace(u.FirstName))
+            {
+                return false;
+            }
+            else if (string.IsNullOrWhiteSpace(u.LastName))
+            {
+                return false;
+            }
+            else if (string.IsNullOrWhiteSpace(u.Username))
+            {
+                return false;
+            }
+            else if (string.IsNullOrWhiteSpace(u.Password))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
     }

@@ -1,0 +1,96 @@
+﻿@using WebApplication.Models
+@model IList<WebApplication.Models.User>
+
+@{
+    ViewBag.Title = "Employees";
+}
+
+@Styles.Render("~/Content/order");
+@Styles.Render("~/Content/employees");
+@Scripts.Render("~/bundles/jquery");
+@Scripts.Render("~/bundles/employees");
+
+<div class="wrapper">
+
+    <h2>Employees <a id="add-new-employee" href="#"><i style="width: 40px; color: #222;" class="fa fa-plus" aria-hidden="true"></i></a></h2>
+
+    <hr style="margin-top:10px; width:44%" />
+
+    <div class="content employee-content">
+
+        @if (Model.Count == 0 || Model == null)
+        {
+            <h1>@ViewBag.ErrorMessage</h1>
+
+        }
+        else
+        {
+            <table class="table">
+                <tr>
+                    <th>Id</th>
+                    <th style="text-align:center">Ime</th>
+                    <th style="text-align:center">Prezime</th>
+                    <th style="width: 50px;"></th>
+                </tr>
+
+                @foreach (User employee in Model)
+                {
+                    <tr>
+                        <td style="text-transform: capitalize; color: navajowhite;">
+                            @employee.Id
+                        </td>
+                        <td style="text-transform: capitalize; color: navajowhite; text-align: center">
+                            @employee.FirstName
+                        </td>
+                        <td style="text-transform: capitalize; color: navajowhite; text-align: center">
+                            @employee.LastName
+                        </td>
+
+                        <td style="text-align: end;">
+                            <button class="btn-delete-employee btn-custom" data-idval="@employee.Id" type="button" style="text-align:center; background-color:orangered"><i class="fa fa-times" aria-hidden="true"></i></button>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        }
+
+
+
+    </div>
+
+</div>
+
+<div class="modal-employee hidden-custom">
+    <!-- Modal content -->
+    <div class="modal-content" style="max-width: 460px; position:relative; background-color:#222">
+        <span class="close">&times;</span>
+
+        <h3 style="text-align:center; color:white; font-size:36px; max-width:70%; margin:20px auto">Register New Employee</h3>
+
+        <hr style="opacity: 0.8; width: 80%;" />
+
+        <form id="employee-form" action="~/Salesmans/Index" class="my-flex-column my-text-white" autocomplete="off">
+            <input type="hidden" autocomplete="off" />
+            
+            <div class="form-group">
+                <label style="font-weight:lighter" for="firstname">First Name</label>
+                <input type="text" class="form-control custom-input-form" placeholder="First Name" id="firstname" autocomplete="off">
+            </div>
+            <div class="form-group ">
+                <label style="font-weight:lighter" for="lastname">Last Name</label>
+                <input type="text" class="form-control custom-input-form" placeholder="Last Name" id="lastname" autocomplete="off">
+            </div>
+            <div class="form-group ">
+                <label style="font-weight:lighter" for="username">Username</label>
+                <input type="text" class="form-control custom-input-form" placeholder="Username" id="username" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label style="font-weight:lighter" for="password">Password</label>
+                <input type="password" class="form-control custom-input-form" placeholder="Password" id="password">
+            </div>
+            <button type="submit" class="btn btn-success" style="margin-bottom:10px; margin-top:10px">Register</button>
+        </form>
+
+    </div>
+</div>

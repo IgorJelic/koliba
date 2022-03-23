@@ -234,6 +234,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\contact.css" />
+    <Content Include="Content\employees.css" />
     <Content Include="Content\fontawesome\font-awesome.css" />
     <Content Include="Content\fontawesome\font-awesome.min.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
@@ -270,6 +271,7 @@
     <Content Include="Content\fonts\fontawesome-webfont.eot" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\contact-script.js" />
+    <Content Include="Scripts\employees-script.js" />
     <Content Include="Scripts\home-script.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -305,11 +307,11 @@
     <Content Include="Views\Partials\_AdminHome.cshtml" />
     <Content Include="Views\Partials\_SalesmanHome.cshtml" />
     <Content Include="Views\Orders\AllOrders.cshtml" />
+    <Content Include="Views\Salesmans\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\ViewModels\" />
-    <Folder Include="Views\Salesmans\" />
     <Folder Include="Views\Shared\AdminPartials\" />
     <Folder Include="Views\Shared\SalesmanPartials\" />
     <Folder Include="Views\Shared\UserPartials\" />

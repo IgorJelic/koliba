@@ -4,6 +4,8 @@
     border: solid 2px #808080;
     background-color: #2e2e2e;
     color: white;
+
+    max-height:64%;
 }
 
 .content::-webkit-scrollbar {
