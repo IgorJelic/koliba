@@ -1,5 +1,7 @@
 ﻿@using WebApplication.Models
-@model IList<WebApplication.Models.Order>
+@using WebApplication.VewModels
+@model AllOrdersViewModel
+@*@model IList<WebApplication.Models.Order>*@
 
 @{
     ViewBag.Title = "AllOrders";
@@ -15,7 +17,7 @@
 
     <hr style="margin-top:10px; width:44%" />
 
-    <div class="content" style="margin: 50px 230px; overflow-y:scroll; overflow-x:hidden">
+    <div class="content" style="margin: 50px 230px;">
 
         <table class="table">
             <tr>
@@ -27,7 +29,7 @@
                 <th style="width: 120px;"></th>
             </tr>
 
-            @foreach (Order item in Model)
+            @foreach (Order item in Model.Orders)
             {
                 <tr>
                     <td style="text-transform: capitalize; color: navajowhite;">

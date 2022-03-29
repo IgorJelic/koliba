@@ -11,18 +11,6 @@ namespace WebApplication.Controllers
 {
     public class HomeController : Controller
     {
-        //private AppDbContext _context;
-
-        //public HomeController()
-        //{
-        //    _context = new AppDbContext();
-        //}
-
-        //protected override void Dispose(bool disposing)
-        //{
-        //    _context.Dispose();
-        //}
-
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";

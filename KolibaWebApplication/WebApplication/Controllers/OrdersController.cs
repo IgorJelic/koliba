@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication.Models;
+using WebApplication.VewModels;
 
 namespace WebApplication.Controllers
 {
@@ -25,7 +26,7 @@ namespace WebApplication.Controllers
                 return RedirectToAction("SignIn", "Home");
             }
 
-            if (currentUser.Role == Models.Enums.Role.Administrator || currentUser.Role == Models.Enums.Role.Salesman)
+            if (currentUser.Role != Models.Enums.Role.User)
             {
                 using (var client = new HttpClient())
                 {
@@ -58,11 +59,19 @@ namespace WebApplication.Controllers
                         return RedirectToAction("Index", "Home");
                     }
 
-                    return View("AllOrders", allOrders);
+                    AllOrdersViewModel allOrdersViewModel = new AllOrdersViewModel { Orders = allOrders, MyRole = currentUser.Role };
+
+                    if (currentUser.Role == Models.Enums.Role.Salesman)
+                    {
+                        return View("AllOrdersSalesman", allOrdersViewModel);
+                    }
+
+
+                    return View("AllOrders", allOrdersViewModel);
 
                 }
             }
-
+            
 
 
             if (currentUser.CurrentOrder.OrderedMeals.Count == 0 && currentUser.CurrentOrder.OrderedDrinks.Count == 0)

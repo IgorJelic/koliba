@@ -100,5 +100,26 @@ namespace WebApplication.Controllers.APIs
 
             return Request.CreateResponse(HttpStatusCode.OK);
         }
+
+        [HttpPatch]
+        [Route("api/updateorder/{orderId}")]
+        public HttpResponseMessage UpdateOrder(int orderId)
+        {
+            using (var db = new AppDbContext())
+            {
+                Order order = db.Orders.FirstOrDefault(o => o.Id == orderId);
+
+                if (order == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, $"No order with ID: {orderId}");
+                }
+
+                order.Delivered = Models.Enums.Delivered.Yes;
+
+                db.SaveChanges();
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
     }
 }

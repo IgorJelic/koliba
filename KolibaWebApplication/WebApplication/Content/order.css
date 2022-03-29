@@ -4,7 +4,9 @@
     border: solid 2px #808080;
     background-color: #2e2e2e;
     color: white;
-
+    overflow-y: scroll;
+    overflow-x: hidden;
+    
     max-height:64%;
 }
 
@@ -56,9 +58,76 @@
     color: #222;
 }
 
+/* SALESMAN css */
+
+.salesman-content{
+    height: 65%;
+    justify-content: center;
+    gap: 5%;
+}
+
+.salesman-content h4{
+    color: orangered;
+    text-align:center;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.salesman-content h4.delivered {
+    color:greenyellow;
+}
+
+.salesman-content th{
+    font-size: 1.6rem;
+    color: #bababa;
+}
+
+.salesman-content tr:not(:first-child):hover {
+    background-color: #222;
+    cursor: pointer;
+}
+
+.salesman-content td {
+    vertical-align:middle !important;
+}
+
+.shipping-area {
+    color: white;
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 80px;
+    width: 160px;
+    border: 2px solid #808080;
+    border-radius: 10px;
+    background-color: #232323;
+    box-shadow: 0px 0px 1px rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shipping-area i {
+    font-size: 4rem;
+    opacity: 0.7;
+
+    transform:skewX(0deg);
+
+    transition: transform 0.1s linear;
+}
+
+/*.shipping-area:hover {
+    background-color: #303030;
+}
+
+.shipping-area:hover i {
+    transform: skewX(-10deg);
+}*/
 
 /* MODAL CSS */
-
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */

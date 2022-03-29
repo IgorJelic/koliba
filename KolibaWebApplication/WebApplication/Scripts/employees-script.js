@@ -51,22 +51,29 @@
 
     $(".btn-delete-employee").click((e) => {
         const id = $(e.currentTarget).data('idval');
-        var actionUrl = "http://localhost:49693/api/removesalesman/" + id;
+
+        if (confirm("Zelite li da uklonite radnika [ ID = " + id + " ]?")) {
+            var actionUrl = "http://localhost:49693/api/removesalesman/" + id;
 
 
-        $.ajax({
-            type: "DELETE",
-            url: actionUrl,
+            $.ajax({
+                type: "DELETE",
+                url: actionUrl,
 
-            success: (result) => {
+                success: (result) => {
 
-                alert("Employee fired!");
-                window.location.href = "Index";
-            },
-            error: (jqXHR, textStatus, errorThrown) => {
-                alert("Removal failed. [" + jqXHR.status + " - " + jqXHR.responseText + "]");
-            }
-        })
+                    alert("Employee fired!");
+                    window.location.href = "Index";
+                },
+                error: (jqXHR, textStatus, errorThrown) => {
+                    alert("Removal failed. [" + jqXHR.status + " - " + jqXHR.responseText + "]");
+                }
+            })
+        }
+        else {
+            return;
+        }
+        
     })
 })
 
