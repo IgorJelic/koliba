@@ -1,0 +1,109 @@
+﻿@using WebApplication.Models
+@model IList<Order>
+
+@{
+    ViewBag.Title = "My Orders History";
+}
+
+@Styles.Render("~/Content/home");
+@Scripts.Render("~/bundles/jquery");
+@Scripts.Render("~/bundles/home");
+
+<div id="hero">
+    <div class="container">
+        @*style="display: flex; justify-content: space-between; flex-wrap: wrap;"*@
+
+
+        <div style="float:left">
+            <h2 class="hero-h2">Orders History</h2>
+            <hr style="width:125%; margin-bottom: 3rem;" />
+            <p><a href="~/Menu/Index" class="btn btn-primary btn-lg" style="float:left; margin-right: 3rem;">New Order &raquo;</a></p>
+        </div>
+
+        <div style="float: right">
+            @if (Model != null && Model.Count > 0)
+            {
+                <div class="content">
+                    <table class="table">
+                        <tr class="table-header">
+                            <th>ID</th>
+                            <th>Vreme</th>
+                            <th>Dostava</th>
+                            <th>Dostavljeno</th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (Order order in Model)
+                        {
+                            <tr>
+                                <td>@order.Id</td>
+                                <td>@order.CreatedAt</td>
+                                <td>@order.Delivery</td>
+                                @if (order.Delivery == WebApplication.Models.Enums.HomeDelivery.Yes)
+                                {
+                                    if (order.Delivered == WebApplication.Models.Enums.Delivered.No)
+                                    {
+                                        <td style="color: orangered; text-align: center">
+                                            @order.Delivered
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td style="color: lawngreen; text-align: center">
+                                            @order.Delivered
+                                        </td>
+                                    }
+                                }
+                                else
+                                {
+                                    <td style="color: navajowhite; text-align: center">
+                                        /
+                                    </td>
+                                }
+                                <td style="text-align: end;">
+                                    @*<button class="btn-order-details btn-custom" type="button" style="text-align:center"><i class="fa fa-info" aria-hidden="true"></i></button>*@
+                                    <button class="btn-order-details btn-custom" data-idval="@order.Id" data-sumprice="@order.SumPrice()" type="button" style="text-align:center">Details</button>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+
+            }
+            else
+            {
+                <h1 style="text-align:end; color: orangered;">Your orders history is empty.<br />Make your first order now!</h1>
+            }
+
+        </div>
+
+    </div>
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-custom-basic-info">
+            <h3 id="order-id"></h3>
+        </div>
+        <hr style="border-top: 1px solid #222" />
+        <div style="display: flex; flex-direction: row; align-content: center; justify-content: space-evenly;">
+            <div class="modal-custom-list meals" id="meals">
+                <p class="meal">Burek (400g)</p>
+                <p class="meal">Pita sa visnjama (200g)</p>
+            </div>
+            <div class="modal-custom-list drinks" id="drinks">
+                <p class="drink">Jogurt (2 kom)</p>
+            </div>
+        </div>
+        <hr style="border-top: 1px solid #222" />
+        <div class="modal-custom-price">
+            <p class="price" id="price"></p>
+        </div>
+    </div>
+
+</div>

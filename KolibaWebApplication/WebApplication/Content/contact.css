@@ -73,6 +73,45 @@
     color: greenyellow;
 }
 
+.open-closed-div {
+    /*border: 2px solid orangered;*/
+    border-radius: 20px;
+    height: 32px;
+    text-transform: uppercase;
+    /*color: #EE4B2B;*/
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    /* positioning */
+    position: absolute;
+    /*
+        OVO JE AKO OCU DA BUDE GORE RAVNO
+        top: -17px;
+        left: 20px;
+        width: 120px;
+
+    */
+    z-index: 1;
+    /*background-color: rgba(142, 107, 107, 1);*/
+    background-color: #4d4d50;
+    box-shadow: rgba(0, 0, 0, 0.6) 0 0 6px;
+    /* OVO JE AKO OCU ONAKO ISKOSENO NA IVICI */
+    transform: rotate(-30deg);
+    top: 6px;
+    left: -24px;
+    width: 130px;
+}
+
+.koliba-closed {
+    color: #EE4B2B;
+    border: 2px solid orangered;
+}
+
+.koliba-open {
+    color: greenyellow;
+    border: 2px solid lawngreen;
+}
+
 /* Set the size of the div element that contains the map */
 #map1,
 #map2 {

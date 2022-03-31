@@ -101,12 +101,6 @@
         $(".modal").css("display", "none");
     })
 
-    //$(window).click((e) => {
-    //    if (e.target.id !== "modal") {
-    //        $(".modal").css("display", "none");
-    //    }
-    //})
-
     $(".shipping-area,.shipping-truck").on('dragover', function (e) {
         $(".shipping-area").css({
             "background-color": "#303030"
@@ -143,38 +137,42 @@ function drag(ev) {
 }
 
 function dropFunction(ev) {
-    ev.preventDefault();
+    if (confirm("Potvrdi dostavljanje.")) {
+        ev.preventDefault();
 
-    var id = ev.dataTransfer.getData("text");
+        var id = ev.dataTransfer.getData("text");
 
-    var patchUrl = "http://localhost:49693/api/updateorder/" + id;
+        var patchUrl = "http://localhost:49693/api/updateorder/" + id;
 
 
-    $.ajax({
-        method: "PATCH",
-        url: patchUrl,
+        $.ajax({
+            method: "PATCH",
+            url: patchUrl,
 
-        success: (response, textStatus, jqXhr) => {
-            alert(jqXhr.responseText);
-        },
-        error: (jqXHR, textStatus, errorThrown) => {
-            alert("The following error occured: " + textStatus, errorThrown);
-        },
-        complete: () => {
-            console.log("Patch completed!");
-        }
-    })
+            success: (response, textStatus, jqXhr) => {
+                //alert(jqXhr.responseText);
+            },
+            error: (jqXHR, textStatus, errorThrown) => {
+                alert("The following error occured: " + textStatus, errorThrown);
+            },
+            complete: () => {
+                console.log("Patch completed!");
+            }
+        })
 
-    var element = $(`#${id}`);
+        var element = $(`#${id}`);
 
-    element.attr('draggable', false);
+        element.attr('draggable', false);
 
-    element.children('td')[0].style = "font-size:1.9rem; font-weight:bold; color:greenyellow";
-    element.children('td')[3].innerHTML = 'Yes';
-    element.children('td')[3].style = 'text-align:center; color:greenyellow';
+        element.children('td')[0].style = "font-size:1.9rem; font-weight:bold; color:greenyellow";
+        element.children('td')[3].innerHTML = 'Yes';
+        element.children('td')[3].style = 'text-align:center; color:greenyellow';
 
-    $("#table-delivered").append(element);
+        $("#table-delivered").append(element);
 
+    }
+
+    
     // REMOVE STYLES
     $(".shipping-area").css({
         "background-color": "#232323"

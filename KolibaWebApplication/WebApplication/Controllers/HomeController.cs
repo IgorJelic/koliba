@@ -25,6 +25,47 @@ namespace WebApplication.Controllers
             return View();
         }
 
+        public ActionResult MyOrders()
+        {
+            int myId = 0;
+
+            if (Session["user"] != null)
+            {
+                var currentUser = Session["user"] as Models.User;
+                myId = currentUser.Id;
+            }
+            else
+            {
+                return RedirectToAction("SignIn", "Home");
+            }
+
+            IList<Order> myOrders = null;
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri($"http://localhost:49693/api/userorders/{myId}");
+
+                var getTask = client.GetAsync("");
+                getTask.Wait();
+
+                var getResult = getTask.Result;
+
+                if (getResult.IsSuccessStatusCode)
+                {
+                    var readTask = getResult.Content.ReadAsAsync<IList<Order>>();
+                    readTask.Wait();
+
+                    myOrders = readTask.Result;
+                }
+                else
+                {
+                    myOrders = null;
+                }
+            }
+
+            return View(myOrders);
+        }
+
         public ActionResult SignIn()
         {
             ViewBag.Title = "Sign In Page";
